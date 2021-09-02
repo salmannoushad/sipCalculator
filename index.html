@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      form {
+        width: 50%;
+        float: left;
+        margin-right: 10px;
+      }
+
+      .age,
+      .money,
+      .rate {
+        padding: 10px 10px;
+      }
+
+      .age {
+        background-color: #d5fff0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .money {
+        background-color: #e2eeff;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .rate {
+        background-color: #ffe2e2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      #submit {
+        width: 100%;
+        padding: 8px 0px;
+        background: #d4ffdb;
+        border: navajowhite;
+        margin-top: 3px;
+      }
+
+      #submit:hover {
+        background: #88ff9c;
+        cursor: pointer;
+      }
+
+      .output {
+        width: 45%;
+        float: right;
+        line-height: 28px;
+      }
+
+      .output li {
+        list-style-type: none;
+        margin-bottom: 5px;
+        background: #d7ffe2;
+        padding: 3px;
+      }
+
+      .output h2 {
+        text-align: center;
+      }
+
+      .output span {
+        color: #001fff;
+      }
+    </style>
+  </head>
+  <title>SIP Calculator Demo</title>
+  <body>
+    <form id="form" action="">
+      <div class="age">
+        <div class="form-control">
+          <label for="current-age">
+            <p>Current Age</p>
+          </label>
+          <input type="number" id="current-age" value="25" min="18" />
+        </div>
+      </div>
+
+      <div class="money">
+        <div class="form-control">
+          <label for="yearly-income">
+            <p>Monthly Income</p>
+          </label>
+          <input type="number" id="yearly-income" value="200000" />
+        </div>
+        <div class="form-control">
+          <label for="current-saving">
+            <p>Initial Bullet Amount</p>
+          </label>
+          <input type="number" id="current-saving" value="100000" />
+        </div>
+
+        <div class="form-control">
+          <label for="monthly-saving">
+            <p>Monthly SIP</p>
+          </label>
+          <input type="number" id="monthly-saving" value="5000" />
+        </div>
+      </div>
+
+      <div class="rate">
+        <div class="form-control">
+          <label for="investment-rate">
+            <p>Annual Rate of Return (%)</p>
+          </label>
+          <input type="number" id="investment-rate" value="10" />
+        </div>
+        <div class="form-control">
+          <label for="inflation-rate">
+            <p>Monthly Rate of Return (%)</p>
+          </label>
+          <input type="number" id="inflation-rate" value="0.8" disabled />
+        </div>
+      </div>
+
+      <button type="submit" id="submit">Calculate</button>
+    </form>
+
+    <div class="output">
+      <h2>Output</h2>
+
+      <ul>
+        <!-- <li class="investment" id="investment">
+          Monthly Investment Rate of Return : <br /><span></span> or
+          <span class="per"></span>
+        </li>
+        <li class="inflation" id="inflation">
+          Monthly Inflation : <br /><span></span> or <span class="per"></span>
+        </li>
+        <li class="retirement" id="retirement">
+          Monthly Rate of Return in Retirement : <br /><span></span> or
+          <span class="per"></span>
+        </li>
+        <li class="retirementSpending" id="retirementSpending">
+          Monthly Retirement Spending Adjusted for Inflation :
+          <br /><span></span>
+        </li>
+        <br />
+        <li class="need" id="need">
+          Ending Balance : <br /><span></span> or <span class="per"></span>
+        </li> -->
+        <li class="have" id="have">
+          Ending Balance : <br /><span></span> or <span class="per"></span>
+        </li>
+      </ul>
+
+      <br />
+    </div>
+
+    <script>
+      //Dom
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        // Inputs
+        let currentAge = document.querySelector("#current-age").value;
+
+        //
+        let annualIncome = document.querySelector("#yearly-income").value; // Monthly Income
+        console.log(annualIncome);
+        let currentSaving = document.querySelector("#current-saving").value; // Initial Bullet Amount 100,000
+        console.log(currentSaving);
+        let monthlySaving = document.querySelector("#monthly-saving").value; // Monthly SIP 5000
+        console.log(monthlySaving);
+
+        //
+        let investmentRate = document.querySelector("#investment-rate").value; // Annual Rate of Return (%) 10.00
+        console.log("investment rate :" + investmentRate);
+
+        let toMonth = 1 / 12;
+
+        //Calculation
+
+        //Investment Rate of Return (Monthly)
+        function monthlyReturn() {
+          return Math.pow(1 + investmentRate / 100, toMonth) - 1;
+        }
+        console.log(monthlyReturn() * 100);
+
+        //Inflation (Monthly)
+        // function monthlyInflation() {
+        //   return Math.pow(1 + annualInflationRate, toMonth) - 1;
+        // }
+
+        //Rate of Return in Retirement (Monthly)
+        // function monthlyRetirement() {
+        //   return Math.pow(1 + annualRetirementRate, toMonth) - 1;
+        // }
+
+        //Monthly Retirement Spending Adjusted for Inflation
+        // function monthlyRetirementSpendingAdjust() {
+        //   let savingAge = retireAge - currentAge;
+        //   return (
+        //     mothlyRetirementSpending *
+        //     Math.pow(1 + annualInflationRate, savingAge)
+        //   );
+        // }
+
+        //You wil need about
+        // function youWillNeed() {
+        //   let power = (deathAge - retireAge) * 12;
+
+        //   if (monthlyRetirement() - monthlyInflation() != 0) {
+        //     let step01_1 = monthlyRetirement() - monthlyInflation();
+        //     let step02_1 = monthlyRetirementSpendingAdjust() / step01_1;
+
+        //     let step03_1 = Math.pow(
+        //       (1 + monthlyInflation()) / (1 + monthlyRetirement()),
+        //       power
+        //     );
+
+        //     return step02_1 * (1 - step03_1);
+        //   } else if (monthlyRetirement() - monthlyInflation() == 0) {
+        //     let step01_2 = monthlyRetirement() - monthlyInflation() - 0.0001;
+        //     let step02_2 = monthlyRetirementSpendingAdjust() / step01_2;
+
+        //     let step03_2 = Math.pow(
+        //       (1 + monthlyInflation() + 0.0001) / (1 + monthlyRetirement()),
+        //       power
+        //     );
+
+        //     return step02_2 * (1 - step03_2);
+        //   }
+        // }
+        // console.log("you will need => " + youWillNeed());
+
+        function youWillHave() {
+          function part01() {
+            let investmentRate =
+              document.querySelector("#investment-rate").value;
+            console.log("annual :" + investmentRate);
+
+            let toMonth = 1 / 12;
+            let powers = (investmentRate + toMonth) / 10; //watch
+            console.log("Power: " + powers);
+            let step01 = Math.pow(1 + investmentRate / 100, powers);
+            console.log("Step)1: " + step01);
+            return currentSaving * step01;
+          }
+          console.log("Part 01 => " + part01());
+
+          function part02() {
+            let power = investmentRate * 12;
+
+            let step01 = Math.pow(1 + monthlyReturn(), power) - 1;
+            let step02 = step01 / monthlyReturn();
+
+            let step03 = 1 + monthlyReturn();
+
+            console.log(power);
+            console.log(step01);
+            console.log(step02);
+            console.log(step03);
+
+            console.log("Part 02 => " + monthlySaving * step02 * step03);
+            return monthlySaving * step02 * step03;
+          }
+
+          // console.log("Part 02 => " + part02());
+
+          // console.log("Part 01 + Part 02 => " + part01() + part02());
+
+          return part01() + part02();
+        }
+
+        function commas(n) {
+          var parts = n.toString().split(".");
+          return (
+            parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+            (parts[1] ? " . " + parts[1] : "")
+          );
+        }
+
+        //Show output in the HTML File
+        // document.querySelector(".investment span").innerHTML =
+        //   monthlyInvestment();
+        // document.querySelector(".investment span.per").innerHTML =
+        //   monthlyInvestment() * 100 + "%";
+
+        // document.querySelector(".inflation span").innerHTML =
+        //   monthlyInflation();
+        // document.querySelector(".inflation span.per").innerHTML =
+        //   monthlyInflation() * 100 + "%";
+
+        // document.querySelector(".retirement span").innerHTML =
+        //   monthlyRetirement();
+        // document.querySelector(".retirement span.per").innerHTML =
+        //   monthlyRetirement() * 100 + "%";
+
+        // document.querySelector(".retirementSpending span").innerHTML = commas(
+        //   monthlyRetirementSpendingAdjust()
+        // );
+
+        // document.querySelector(".need span").innerHTML = commas(youWillNeed());
+        // document.querySelector(".need span.per").innerHTML =
+        //   parseInt(youWillNeed() / 1000000) + "M";
+
+        document.querySelector(".have span").innerHTML = commas(youWillHave());
+        document.querySelector(".have span.per").innerHTML =
+          parseInt(youWillHave() / 1000000) + "M";
+      });
+    </script>
+  </body>
+</html>
