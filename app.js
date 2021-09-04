@@ -238,10 +238,10 @@ function inputValidation() {
     if (retireAge < 3) {
       retireAgeStatus = false;
       retireAgeError.innerHTML =
-        "Investment Tenure age should be equal or more than 40";
+        "Investment Tenure age should be 3 or less than 40";
     } else if (retireAge > 40) {
       retireAgeStatus = false;
-      retireAgeError.innerHTML = `Investment Tenure age should be equal or less than 3`;
+      retireAgeError.innerHTML = `Investment Tenure age should be 40 or more than 3`;
     } else if (retireAge >= 3 && retireAge <= 40) {
       retireAgeStatus = true;
       retireAgeError.innerHTML = "";
