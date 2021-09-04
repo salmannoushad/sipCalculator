@@ -207,12 +207,12 @@ function inputValidation() {
       monthlySavingStatus = false;
       incomePercentTag.classList.add("hidden");
 
-      monthlySaveError.innerHTML = "Monthly income cannot be less than 0";
+      monthlySaveError.innerHTML = "SIP installment cannot be less than 0";
     } //
     else if (monthlySavepercent > 75) {
       monthlySavingStatus = false;
       incomePercentTag.classList.add("hidden");
-      monthlySaveError.innerHTML = `Montly income shouldn't be more than 75% of annual income`;
+      monthlySaveError.innerHTML = `SIP installment shouldn't be more than 75% of annual income`;
     } //
     else if (monthlySaving > 0 && monthlySavepercent < 75) {
       monthlySavingStatus = true;
@@ -238,10 +238,10 @@ function inputValidation() {
     if (retireAge < 3) {
       retireAgeStatus = false;
       retireAgeError.innerHTML =
-        "Retirement age should be equal or more than 40";
+        "Investment Tenure age should be equal or more than 40";
     } else if (retireAge > 40) {
       retireAgeStatus = false;
-      retireAgeError.innerHTML = `Retirement age should be equal or less than 3`;
+      retireAgeError.innerHTML = `Investment Tenure age should be equal or less than 3`;
     } else if (retireAge >= 3 && retireAge <= 40) {
       retireAgeStatus = true;
       retireAgeError.innerHTML = "";
