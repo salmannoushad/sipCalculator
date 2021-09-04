@@ -1,310 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <style>
-      * {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
-      form {
-        width: 50%;
-        float: left;
-        margin-right: 10px;
-      }
-
-      .age,
-      .money,
-      .rate {
-        padding: 10px 10px;
-      }
-
-      .age {
-        background-color: #d5fff0;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .money {
-        background-color: #e2eeff;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .rate {
-        background-color: #ffe2e2;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-
-      #submit {
-        width: 100%;
-        padding: 8px 0px;
-        background: #d4ffdb;
-        border: navajowhite;
-        margin-top: 3px;
-      }
-
-      #submit:hover {
-        background: #88ff9c;
-        cursor: pointer;
-      }
-
-      .output {
-        width: 45%;
-        float: right;
-        line-height: 28px;
-      }
-
-      .output li {
-        list-style-type: none;
-        margin-bottom: 5px;
-        background: #d7ffe2;
-        padding: 3px;
-      }
-
-      .output h2 {
-        text-align: center;
-      }
-
-      .output span {
-        color: #001fff;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
+    <title>SIP Calculator</title>
   </head>
-  <title>SIP Calculator Demo</title>
+
   <body>
-    <form id="form" action="">
-      <div class="age">
-        <div class="form-control">
-          <label for="current-age">
-            <p>Current Age</p>
-          </label>
-          <input type="number" id="current-age" value="25" min="18" />
-        </div>
+    <div class="container">
+      <div class="titles">
+        <h2>SIP Calculator</h2>
+        <!-- <p>
+          Tell us a few things about yourself and this calculator will show
+          whether you're on track for the retirement you want.
+        </p> -->
       </div>
 
-      <div class="money">
-        <div class="form-control">
-          <label for="yearly-income">
-            <p>Monthly Income</p>
-          </label>
-          <input type="number" id="yearly-income" value="200000" />
-        </div>
-        <div class="form-control">
-          <label for="current-saving">
-            <p>Initial Bullet Amount</p>
-          </label>
-          <input type="number" id="current-saving" value="100000" />
+      <div class="sub-container">
+        <div class="form">
+          <form id="form">
+            <!-- Info Section 01 -->
+            <div class="info-1">
+              I am
+              <div class="input-div">
+                <input type="number" id="age" value="25" />
+              </div>
+              years old, my monthly income is
+              <div class="input-div">
+                <!-- <input type="number" id="yearlyIncome" value="200000"> -->
+                <input type="number" id="monthlyIncome" value="100000" />
+              </div>
+              Taka and Innitial bullet amount
+              <div class="input-div">
+                <input type="number" id="currentSavings" value="100000" />
+              </div>
+              Taka.
+              <small class="errors currAgeError"></small>
+              <small class="errors monthlyIncomeError"></small>
+              <small class="errors currentSavingError"></small>
+            </div>
+
+            <!-- Info Section 02 -->
+            <div class="info-2">
+              <div class="monthly-savings">
+                <h5 style="text-align: center">
+                  SIP Installment Amount Per Month (BDT):
+                </h5>
+                <!-- Input with decrement and increment button -->
+                <div class="button-input">
+                  <div class="decrement">
+                    <button class="decrease">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+                  <input type="number" id="monthlySavings" value="5000" />
+                  <div class="increment">
+                    <button class="increase">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <small class="incomePercent">30% of my monthly income</small>
+                <small class="errors monthlySaveError"></small>
+              </div>
+            </div>
+
+            <div class="info-3">
+              <!-- part2 collapse or open button -->
+              <!-- <div class="info-3-part1">
+                <h4>Optional</h4>
+                <button><i class="fas fa-chevron-up"></i></button>
+              </div> -->
+
+              <!-- It will be collapse by default -->
+              <div class="info-3-part2 hidden">
+                <!-- Retirement age -->
+                <div class="retire-age">
+                  <h5>Investment Tenure (Years):</h5>
+                  <div class="button-input">
+                    <div class="decrement">
+                      <button class="decrease">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                    <input type="number" id="retireAge" value="3" />
+                    <div class="increment">
+                      <button class="increase">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <small class="errors retireAgeError"></small>
+                </div>
+                <!-- Monthly Retirement Spending Input -->
+                <!-- <div class="monthly-spending">
+                  <h5>Monthly Expense after Retirement (BDT):</h5>
+                  <div class="button-input">
+                    <div class="decrement">
+                      <button class="decrease">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                    <input type="number" id="monthlySpendings" value="50000" />
+                    <div class="increment">
+                      <button class="increase">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <small class="errors monthlyRetirementSpendingError"></small>
+                </div> -->
+
+                <!-- Life expectancy/Death Age -->
+                <!-- <div class="death-age">
+                  <h5>Life Expectancy:</h5>
+                  <div class="button-input">
+                    <div class="decrement">
+                      <button class="decrease">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                    <input type="number" id="deathAge" value="72" />
+                    <div class="increment">
+                      <button class="increase">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <small class="errors deathAgeError"></small>
+                </div> -->
+
+                <!-- Investment Rate of Return -->
+                <div class="investment-rate">
+                  <h5>Expected Rate of Return (%)</h5>
+                  <div class="button-input">
+                    <div class="decrement">
+                      <button class="decrease">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                    <input
+                      type="number"
+                      id="investmentRate"
+                      value="10.0"
+                      step="any"
+                    />
+                    <div class="increment">
+                      <button class="increase">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <small class="errors investmentRateError"></small>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
 
-        <div class="form-control">
-          <label for="monthly-saving">
-            <p>Monthly SIP</p>
-          </label>
-          <input type="number" id="monthly-saving" value="5000" />
+        <div class="output">
+          <!-- Vertically Up Down progress bar -->
+          <div class="verticale-progress">
+            <div class="title">
+              <h3>
+                Investment Tenure (Years):
+                <span class="retireAgeShow">3</span>?
+              </h3>
+            </div>
+
+            <!-- This div has all bar element -->
+            <div class="haveNeed">
+              <!-- You will have bar -->
+              <div class="have">
+                <!-- Main Bar -->
+                <div class="have-bar">
+                  <!-- Amount Show -->
+                  <div class="have-amount">0.34M</div>
+                  <!-- Sub bar -->
+                  <div class="sub-have-bar"></div>
+                </div>
+                <p>Future Value of Total Investment (BDT)</p>
+              </div>
+              <!-- You will need bar -->
+              <div class="need">
+                <div class="need-bar">
+                  <div class="need-amount">0.28M</div>
+
+                  <div class="sub-need-bar"></div>
+                </div>
+                <p>Present Value of Total Investment (BDT):</p>
+              </div>
+            </div>
+            <hr />
+          </div>
+
+          <!-- Horizontally Progress bar -->
+          <div class="horizontal-progress" style="display: none">
+            <!-- Title of the div -->
+            <div class="title">
+              <h3>Retirement Planning Score:</h3>
+            </div>
+            <!-- Move bar -->
+            <div class="score-bars">
+              <!-- It will move during progress -->
+              <div class="move">
+                <div class="space"></div>
+                <div class="content">
+                  You're <span class="percent">54%</span> to your goal.
+                </div>
+              </div>
+              <!-- Icon -->
+              <!-- <div class="icon">
+                            <i class="fas fa-sort-down"></i>
+                        </div> -->
+              <div class="icon">
+                <div class="iconSpace"></div>
+                <div class="iconContent">
+                  <i class="fas fa-sort-down"></i>
+                </div>
+              </div>
+              <!-- Four Score Bar -->
+              <div class="all-bar">
+                <div class="attention">Needs Attention</div>
+                <div class="onWay">On Your Way</div>
+                <div class="gettingClose">Getting Close</div>
+                <div class="onTrack">On Track</div>
+              </div>
+              <div class="describe">
+                <div class="attention-describe hidden">
+                  <h3>
+                    Let's get your future
+                    <span class="color"> out of the red zone. </span>
+                  </h3>
+                  <p>
+                    Better late than never. A disciplined investment style can
+                    still get you to your desired financial destination. Invest
+                    in our ‘Bullet SIP Program’ to build your wealth and find an
+                    opportunity to grow your dough.
+                  </p>
+                </div>
+                <div class="onWay-describe hidden">
+                  <h3>
+                    Solid start, but let's
+                    <span class="color">close the gap.</span>
+                  </h3>
+                  <p>
+                    You’re off to the races, but have some catching up to do.
+                    Invest in our ‘Bullet SIP Program’ to build your wealth to
+                    stay on top of your personal finances.
+                  </p>
+                </div>
+                <div class="gettingClose-describe">
+                  <h3>
+                    You're close. Let's
+                    <span class="color">get you on track.</span>
+                  </h3>
+                  <p>
+                    Just a few finishing touches and you'll be on your way.
+                    Invest in our ‘Bullet SIP Program’ to build your wealth and
+                    find an opportunity to grow your dough.
+                  </p>
+                </div>
+                <div class="onTrack-describe hidden">
+                  <h3>
+                    You're rocking it. Can you
+                    <span class="color">boost it even more?</span>
+                  </h3>
+                  <p>
+                    Could your future be any brighter? Let’s find out. Invest in
+                    our ‘Bullet SIP Program’ to build your wealth to stay on top
+                    of your personal finances.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="rate">
-        <div class="form-control">
-          <label for="investment-rate">
-            <p>Annual Rate of Return (%)</p>
-          </label>
-          <input type="number" id="investment-rate" value="10" />
-        </div>
-        <div class="form-control">
-          <label for="inflation-rate">
-            <p>Monthly Rate of Return (%)</p>
-          </label>
-          <input type="number" id="inflation-rate" value="0.8" disabled />
-        </div>
-      </div>
-
-      <button type="submit" id="submit">Calculate</button>
-    </form>
-
-    <div class="output">
-      <h2>Output</h2>
-
-      <ul>
-        <!-- <li class="investment" id="investment">
-          Monthly Investment Rate of Return : <br /><span></span> or
-          <span class="per"></span>
-        </li>
-        <li class="inflation" id="inflation">
-          Monthly Inflation : <br /><span></span> or <span class="per"></span>
-        </li>
-        <li class="retirement" id="retirement">
-          Monthly Rate of Return in Retirement : <br /><span></span> or
-          <span class="per"></span>
-        </li>
-        <li class="retirementSpending" id="retirementSpending">
-          Monthly Retirement Spending Adjusted for Inflation :
-          <br /><span></span>
-        </li>
-        <br />
-        <li class="need" id="need">
-          Ending Balance : <br /><span></span> or <span class="per"></span>
-        </li> -->
-        <li class="have" id="have">
-          Ending Balance : <br /><span></span> or <span class="per"></span>
-        </li>
-      </ul>
-
-      <br />
     </div>
+    <span class="hideIt"></span>
+    <script src="app.js"></script>
+    <!-- Developer: Md. Abu Salman 
+    Contact Me: https://www.linkedin.com/in/md-abu-salman-4043401b8/
 
-    <script>
-      //Dom
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        // Inputs
-        let currentAge = document.querySelector("#current-age").value;
+    or
 
-        //
-        let annualIncome = document.querySelector("#yearly-income").value; // Monthly Income
-        console.log(annualIncome);
-        let currentSaving = document.querySelector("#current-saving").value; // Initial Bullet Amount 100,000
-        console.log(currentSaving);
-        let monthlySaving = document.querySelector("#monthly-saving").value; // Monthly SIP 5000
-        console.log(monthlySaving);
+    fb.com/salman.fci
+    Phone No: 01638137520
 
-        //
-        let investmentRate = document.querySelector("#investment-rate").value; // Annual Rate of Return (%) 10.00
-        console.log("investment rate :" + investmentRate);
-
-        let toMonth = 1 / 12;
-
-        //Calculation
-
-        //Investment Rate of Return (Monthly)
-        function monthlyReturn() {
-          return Math.pow(1 + investmentRate / 100, toMonth) - 1;
-        }
-        console.log(monthlyReturn() * 100);
-
-        //Inflation (Monthly)
-        // function monthlyInflation() {
-        //   return Math.pow(1 + annualInflationRate, toMonth) - 1;
-        // }
-
-        //Rate of Return in Retirement (Monthly)
-        // function monthlyRetirement() {
-        //   return Math.pow(1 + annualRetirementRate, toMonth) - 1;
-        // }
-
-        //Monthly Retirement Spending Adjusted for Inflation
-        // function monthlyRetirementSpendingAdjust() {
-        //   let savingAge = retireAge - currentAge;
-        //   return (
-        //     mothlyRetirementSpending *
-        //     Math.pow(1 + annualInflationRate, savingAge)
-        //   );
-        // }
-
-        //You wil need about
-        // function youWillNeed() {
-        //   let power = (deathAge - retireAge) * 12;
-
-        //   if (monthlyRetirement() - monthlyInflation() != 0) {
-        //     let step01_1 = monthlyRetirement() - monthlyInflation();
-        //     let step02_1 = monthlyRetirementSpendingAdjust() / step01_1;
-
-        //     let step03_1 = Math.pow(
-        //       (1 + monthlyInflation()) / (1 + monthlyRetirement()),
-        //       power
-        //     );
-
-        //     return step02_1 * (1 - step03_1);
-        //   } else if (monthlyRetirement() - monthlyInflation() == 0) {
-        //     let step01_2 = monthlyRetirement() - monthlyInflation() - 0.0001;
-        //     let step02_2 = monthlyRetirementSpendingAdjust() / step01_2;
-
-        //     let step03_2 = Math.pow(
-        //       (1 + monthlyInflation() + 0.0001) / (1 + monthlyRetirement()),
-        //       power
-        //     );
-
-        //     return step02_2 * (1 - step03_2);
-        //   }
-        // }
-        // console.log("you will need => " + youWillNeed());
-
-        function youWillHave() {
-          function part01() {
-            let investmentRate =
-              document.querySelector("#investment-rate").value;
-            console.log("annual :" + investmentRate);
-
-            let toMonth = 1 / 12;
-            let powers = (investmentRate + toMonth) / 10; //watch
-            console.log("Power: " + powers);
-            let step01 = Math.pow(1 + investmentRate / 100, powers);
-            console.log("Step)1: " + step01);
-            return currentSaving * step01;
-          }
-          console.log("Part 01 => " + part01());
-
-          function part02() {
-            let power = investmentRate * 12;
-
-            let step01 = Math.pow(1 + monthlyReturn(), power) - 1;
-            let step02 = step01 / monthlyReturn();
-
-            let step03 = 1 + monthlyReturn();
-
-            console.log(power);
-            console.log(step01);
-            console.log(step02);
-            console.log(step03);
-
-            console.log("Part 02 => " + monthlySaving * step02 * step03);
-            return monthlySaving * step02 * step03;
-          }
-
-          // console.log("Part 02 => " + part02());
-
-          // console.log("Part 01 + Part 02 => " + part01() + part02());
-
-          return part01() + part02();
-        }
-
-        function commas(n) {
-          var parts = n.toString().split(".");
-          return (
-            parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-            (parts[1] ? " . " + parts[1] : "")
-          );
-        }
-
-        //Show output in the HTML File
-        // document.querySelector(".investment span").innerHTML =
-        //   monthlyInvestment();
-        // document.querySelector(".investment span.per").innerHTML =
-        //   monthlyInvestment() * 100 + "%";
-
-        // document.querySelector(".inflation span").innerHTML =
-        //   monthlyInflation();
-        // document.querySelector(".inflation span.per").innerHTML =
-        //   monthlyInflation() * 100 + "%";
-
-        // document.querySelector(".retirement span").innerHTML =
-        //   monthlyRetirement();
-        // document.querySelector(".retirement span.per").innerHTML =
-        //   monthlyRetirement() * 100 + "%";
-
-        // document.querySelector(".retirementSpending span").innerHTML = commas(
-        //   monthlyRetirementSpendingAdjust()
-        // );
-
-        // document.querySelector(".need span").innerHTML = commas(youWillNeed());
-        // document.querySelector(".need span.per").innerHTML =
-        //   parseInt(youWillNeed() / 1000000) + "M";
-
-        document.querySelector(".have span").innerHTML = commas(youWillHave());
-        document.querySelector(".have span.per").innerHTML =
-          parseInt(youWillHave() / 1000000) + "M";
-      });
-    </script>
+    -->
   </body>
 </html>
