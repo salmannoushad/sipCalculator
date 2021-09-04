@@ -547,7 +547,7 @@ increaseDecreaseBtn.forEach((val) => {
       if (input.id == "monthlySavings") {
         input.value = Number(input.value) - 1000;
       } else if (input.id == "retireAge") {
-        input.value = Number(input.value) - 2;
+        input.value = Number(input.value) - 1;
       } else if (input.id == "investmentRate") {
         input.value = Number(input.value) - 0.5;
       }
@@ -556,7 +556,7 @@ increaseDecreaseBtn.forEach((val) => {
       if (input.id == "monthlySavings") {
         input.value = Number(input.value) + 1000;
       } else if (input.id == "retireAge") {
-        input.value = Number(input.value) + 2;
+        input.value = Number(input.value) + 1;
       } else if (input.id == "investmentRate") {
         input.value = Number(input.value) + 0.5;
       }
