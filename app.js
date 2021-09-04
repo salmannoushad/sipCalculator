@@ -203,11 +203,11 @@ function inputValidation() {
       ".info-2 small.incomePercent"
     );
 
-    if (monthlySaving < 0) {
+    if (monthlySaving < 5000) {
       monthlySavingStatus = false;
       incomePercentTag.classList.add("hidden");
 
-      monthlySaveError.innerHTML = "SIP installment cannot be less than 0";
+      monthlySaveError.innerHTML = "SIP installment cannot be less than 5000";
     } //
     else if (monthlySavepercent > 75) {
       monthlySavingStatus = false;
