@@ -37,7 +37,7 @@ form.addEventListener("submit", function (e) {
 //Start
 
 //Status check
-let currentAgeStatus = true;
+// let currentAgeStatus = true;
 let retireAgeStatus = true;
 let deathAgeStatus = true;
 let monthlyIncomeStatus = true;
@@ -47,7 +47,7 @@ let monthlyRetirementSpendingStatus = true;
 let investmentRateStatus = true;
 
 //Variables
-let currentAge = document.querySelector("#age").value;
+// let currentAge = document.querySelector("#age").value;
 let retireAge = document.querySelector("#retireAge").value; // Investment Tenure (Years):
 // let deathAge = document.querySelector("#deathAge").value;
 let monthlyIncome = document.querySelector("#monthlyIncome").value;
@@ -128,7 +128,7 @@ function youNeed(monthly_Saving, retire_Age, current_Saving) {
 //This will validate onTyping inputs
 function inputValidation() {
   //updating values in variable
-  currentAge = document.querySelector("#age").value;
+  // currentAge = document.querySelector("#age").value;
   monthlyIncome = document.querySelector("#monthlyIncome").value;
   currentSaving = document.querySelector("#currentSavings").value;
   monthlySaving = document.querySelector("#monthlySavings").value;
@@ -151,19 +151,19 @@ function inputValidation() {
   let investmentRateError = document.querySelector(".investmentRateError");
 
   //This will validate current age
-  function currentAgeValidation() {
-    if (currentAge < 18) {
-      currentAgeStatus = false;
-      currAgeError.innerHTML = "Age must be at least 18";
-    } else if (currentAge > 90) {
-      currentAgeStatus = false;
-      currAgeError.innerHTML = "Age must be at most 90";
-    } else if (currentAge >= 18 && currentAge <= 90) {
-      currentAgeStatus = true;
-      currAgeError.innerHTML = "";
-    }
-  }
-  currentAgeValidation();
+  // function currentAgeValidation() {
+  //   if (currentAge < 18) {
+  //     currentAgeStatus = false;
+  //     currAgeError.innerHTML = "Age must be at least 18";
+  //   } else if (currentAge > 90) {
+  //     currentAgeStatus = false;
+  //     currAgeError.innerHTML = "Age must be at most 90";
+  //   } else if (currentAge >= 18 && currentAge <= 90) {
+  //     currentAgeStatus = true;
+  //     currAgeError.innerHTML = "";
+  //   }
+  // }
+  // currentAgeValidation();
 
   //This will validate annual income
   function monthlyIncomeValidation() {
@@ -500,7 +500,7 @@ function outputToDom(willHave, willNeed) {
 
 //Array of Inputs
 let allInput = [
-  document.querySelector("#age"),
+  // document.querySelector("#age"),
   document.querySelector("#retireAge"),
   // document.querySelector("#deathAge"),
 
@@ -518,7 +518,6 @@ allInput.forEach((val) => {
     inputValidation();
 
     if (
-      currentAgeStatus &&
       retireAgeStatus &&
       monthlyIncomeStatus &&
       currentSavingStatus &&
@@ -566,7 +565,6 @@ increaseDecreaseBtn.forEach((val) => {
     inputValidation();
 
     if (
-      currentAgeStatus &&
       retireAgeStatus &&
       monthlyIncomeStatus &&
       currentSavingStatus &&
