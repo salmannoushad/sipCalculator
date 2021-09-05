@@ -378,3 +378,8 @@ small.errors {
   display: block;
   color: red;
 }
+
+.imgss {
+  height: 500px;
+  width: 700px;
+}

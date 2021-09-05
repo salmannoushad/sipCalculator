@@ -66,7 +66,7 @@ let investmentRate = document.querySelector("#investmentRate").value; // Expecte
 //converted from percentage
 let expectedRate = investmentRate / 100;
 
-let toMonth = 1 / 12;
+let toMonth = parseFloat(1 / 12);
 
 function youHave(
   retire_Age,
@@ -79,7 +79,8 @@ function youHave(
   let monthlyRate = (rateName) => Math.pow(1 + rateName, toMonth) - 1;
 
   function part01() {
-    let power = (retire_Age + toMonth) / 10;
+    let power = parseFloat(retire_Age) + parseFloat(toMonth);
+
     console.log("Fpow : " + power);
 
     let step01 = Math.pow(1 + annual_Investment / 100, power);
