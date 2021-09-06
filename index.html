@@ -50,6 +50,7 @@
                   id="monthlyIncome"
                   value="100000"
                   style="width: 100px !important"
+                  onkeydown="return (event.keyCode!=13)"
                 />
               </div>
               Taka
@@ -57,7 +58,12 @@
 
               Innitial bullet amount
               <div class="input-div">
-                <input type="number" id="currentSavings" value="100000" />
+                <input
+                  type="number"
+                  id="currentSavings"
+                  value="100000"
+                  onkeydown="return (event.keyCode!=13)"
+                />
               </div>
               Taka.
               <small class="errors currAgeError"></small>
