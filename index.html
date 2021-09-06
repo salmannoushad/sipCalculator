@@ -78,14 +78,19 @@
                       <i class="fas fa-minus"></i>
                     </button>
                   </div>
-                  <input type="number" id="monthlySavings" value="5000" />
+                  <input
+                    type="number"
+                    id="monthlySavings"
+                    value="5000"
+                    onkeydown="return (event.keyCode!=13)"
+                  />
                   <div class="increment">
                     <button class="increase">
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
                 </div>
-                <small class="incomePercent">30% of my monthly income</small>
+                <small class="incomePercent">5% of my monthly income</small>
                 <small class="errors monthlySaveError"></small>
               </div>
             </div>
@@ -108,7 +113,12 @@
                         <i class="fas fa-minus"></i>
                       </button>
                     </div>
-                    <input type="number" id="retireAge" value="3" />
+                    <input
+                      type="number"
+                      id="retireAge"
+                      value="3"
+                      onkeydown="return (event.keyCode!=13)"
+                    />
                     <div class="increment">
                       <button class="increase">
                         <i class="fas fa-plus"></i>
@@ -171,6 +181,7 @@
                       id="investmentRate"
                       value="10.0"
                       step="any"
+                      onkeydown="return (event.keyCode!=13)"
                     />
                     <div class="increment">
                       <button class="increase">
@@ -347,5 +358,23 @@
       integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
       crossorigin="anonymous"
     ></script>
+    <!-- <script type="text/javascript">
+      window.addEventListener(
+        "keydown",
+        function (e) {
+          if (
+            e.keyIdentifier == "U+000A" ||
+            e.keyIdentifier == "Enter" ||
+            e.keyCode == 13
+          ) {
+            if (e.target.nodeName == "INPUT" && e.target.type == "text") {
+              e.preventDefault();
+              return false;
+            }
+          }
+        },
+        true
+      );
+    </script> -->
   </body>
 </html>
