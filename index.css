@@ -16,9 +16,6 @@
   box-sizing: border-box;
 }
 
-body {
-}
-
 .secondportion1 {
   border: 1px solid #45ccb8;
   margin: 3px;
@@ -27,7 +24,4 @@ body {
 .secondportion2 {
   border: 1px solid #ff686b;
   margin: 3px;
-}
-
-.inputsAgeIncome {
 }
