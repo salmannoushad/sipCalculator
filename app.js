@@ -273,12 +273,12 @@ function inputValidation() {
       investmentRateStatus = false;
       investmentRateError.innerHTML =
         "Expected Rate of Return should be equal or more than '0'. ";
-    } else if (investmentRate > 15) {
+    } else if (investmentRate > 25) {
       investmentRateStatus = false;
       //       Expected Rate of Return
       // should be equal or more
       // than ‘0’.
-      investmentRateError.innerHTML = `Expected Rate of Return should be equal or more than '0'. `;
+      investmentRateError.innerHTML = `Expected Rate of Return should be equal or less than '25'. `;
     } else if (investmentRate >= 0 && investmentRate <= 15) {
       investmentRateStatus = true;
       investmentRateError.innerHTML = "";
