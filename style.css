@@ -241,7 +241,7 @@ form .info-3 .info-3-part2 > div:last-child {
   font-size: 18px;
   transition: top 0.5s;
 
-  top: -12%;
+  top: -20%;
 }
 /*  */
 .output .need-bar {
@@ -254,7 +254,7 @@ form .info-3 .info-3-part2 > div:last-child {
   background-color: white;
   transition: height 0.5s;
 
-  height: 20%;
+  height: 45%;
 }
 .output .need-amount {
   position: absolute;
